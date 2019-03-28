@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<title>Malware Detection Site</title>
+<body>
+<div>
+    <form name="demoForm"  id="upForm" enctype="multipart/form-data"
+          action="{% url 'upload' %}" method="post">{% csrf_token %}
+        <p>Upload File: <input type="file" id="TForm" name="userfile"></p>
+        <p><button type="button" id="upButton" value="Submit" class="btn btn-default btn-sm">Upload</button></p>
+    </form>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+
