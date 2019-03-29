@@ -10,9 +10,10 @@ def index(request):
 
 
 def UpLoad(request):
-    if request.method == "POST" and request.FILES['userfile']:
+    context = {}
+    if request.method == "POST" and 'userfile' in request.FILES:
         # Get the posted form
         userfile = request.FILES['userfile']
         result_list = sendQuery(userfile)
         context = {'result_list': result_list}
-        return render(request, 'index.html', context)
+    return render(request, 'index.html', context)
