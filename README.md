@@ -38,11 +38,11 @@ main/
         __init__.py
     models.py # defines the query result model
     tests.py
-    urls.py
-    views.py
+    urls.py # defines the url mapping
+    views.py # defines the view rendering functions
     templates/index.html # the home page
-    tasks.py  # defines web task such as sending query and email notifications
-    query.py  # define the query operation
+    tasks.py  # defines web tasks such as sending query and email notifications
+    query.py  # defines the query operation
     
  VDSite/
      __init__.py
@@ -53,13 +53,17 @@ main/
 
 ## Issues
 * 1. API's daily limit
+
 Since the Public API is limited to 4 requests per minute on `virustotal.com`, the query is sleeped every 20 seconds.
 * 2. Test mode
-For fast verification, only up to 5 hashed values are tested. To disable the test mode, set `mode` to strings other than `'test'` in function `send_query` located in [main/task.py](VDSite/main/task.py).
+
+For fast verification, only up to 5 hashed values are tested. To disable the test mode, set `mode` to strings other than `'test'` in function `send_query` located in [main/task.py](VDSite/main/tasks.py).
 * 3. Email notification
-To enable the email notification, set `EMAIL_HOST , EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_FROM ` at the end of [VDSite/setting.py](VDsite/VDSite/settings.py)
+
+To enable the email notification, set `EMAIL_HOST , EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_FROM ` at the end of [VDSite/settings.py](VDSite/VDSite/settings.py)
 * 4. Cache options
-The cache is placed into main memory by default, there are also many other options in Django. For example, to enable a database caching, comment out the following in [VDSite/setting.py](VDsite/VDSite/settings.py)
+
+The cache is placed into main memory by default, there are also many other options in Django. For example, to enable a database caching, comment out the following in [VDSite/settings.py](VDSite/VDSite/settings.py)
 ```
 CACHES = {
     'default': {
@@ -91,3 +95,9 @@ python manager.py makemigrations
 python manager.py migrate
 ```
 For more information on django's cache mechanism, visit [here](https://docs.djangoproject.com/en/2.1/topics/cache/)
+
+## TODO lists
+* Check the validicity of user's email address input.
+* Check the format and size of the user upload. 
+* Paging if the query result is too long. (More of a front end job, not fulfilled here)
+* Using asynchronized operations to update the webpage with partial results. (In Djiango, implementation of async requests depends on different brokers. Not fulfilled here for the easy deployment of the project)
