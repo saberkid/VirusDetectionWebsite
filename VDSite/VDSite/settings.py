@@ -122,11 +122,11 @@ STATIC_URL = '/static/'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
-        'TIMEOUT': 60 * 60 * 24,
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'main_query_result',
+        'TIMEOUT': 10, #60 * 60 * 24,
         'OPTIONS': {
-            'MAX_ENTRIES': 10000
+            'MAX_ENTRIES': 100000
         }
     }
 }

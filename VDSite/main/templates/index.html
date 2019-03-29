@@ -3,16 +3,37 @@
 <title>Malware Detection Site</title>
 <body>
 <div>
-    <form name="demoForm"  id="upForm" enctype="multipart/form-data"
+    <form name="upForm" enctype="multipart/form-data"
           action="{% url 'upload' %}" method="post">{% csrf_token %}
         <p>Upload File: <input type="file" id="TForm" name="userfile"></p>
-        <p><button type="button" id="upButton" value="Submit" class="btn btn-default btn-sm">Upload</button></p>
+        <p><button type="submit">Upload</button></p>
     </form>
 </div>
-<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
+<table class="table table-striped " style="text-align: center; ">
+    <thead style="font-weight: bold;">
+    <tr>
+        <td>hash_value (MD5 or Sha256)</td>
+        <td>Fortinet detection names</td>
+        <td>Number of engines detected</td>
+        <td>Scan Date</td>
+    </tr>
+    </thead>
+{% if result_list %}
 
-</script>
+    {% for result in result_list %}
+    <tr>
+        <td>{{result.hash}}</td>
+        <td>{{result.fortinet}}</td>
+        <td>{{result.positive}}</td>
+        <td>{{result.date}}</td>
+    </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No Resuls are available.</p>
+{% endif %}
+</table>>
+
 </body>
 </html>
 
