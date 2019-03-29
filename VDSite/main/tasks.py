@@ -13,6 +13,7 @@ def send_notification(email):
     except:
         print("Error Occured When Sending Notification ")
 
+
 def send_query(f, mode='test'):
     count = 0
     res_list = []
