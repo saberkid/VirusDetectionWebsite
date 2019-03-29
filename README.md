@@ -56,12 +56,15 @@ main/
 1. API's daily limit
 
 Since the Public API is limited to 4 requests per minute on `virustotal.com`, the query is sleeped every 20 seconds.
+
 2. Test mode
 
 For fast verification, only up to 5 hashed values are tested. To disable the test mode, set `mode` to strings other than `'test'` in function `send_query` located in [main/task.py](VDSite/main/tasks.py).
+
 3. Email notification
 
 To enable the email notification, set `EMAIL_HOST , EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_FROM ` at the end of [VDSite/settings.py](VDSite/VDSite/settings.py)
+
 4. Cache options
 
 The cache is placed into main memory by default. There are also many other options in Django. For example, to enable a database caching, comment out the following in [VDSite/settings.py](VDSite/VDSite/settings.py)
