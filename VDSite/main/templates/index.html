@@ -6,6 +6,7 @@
     <form name="upForm" enctype="multipart/form-data"
           action="{% url 'upload' %}" method="post">{% csrf_token %}
         <p>Upload File: <input type="file" id="TForm" name="userfile"></p>
+        <p>Your Email Address (Optional): <input type="text", name="email"></p>
         <p><button type="submit">Upload</button></p>
     </form>
 </div>

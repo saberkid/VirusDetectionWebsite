@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -120,13 +119,35 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'main_query_result',
+#         'TIMEOUT': 60 * 60 * 24, # TIMEOUT after 1 day
+#         'OPTIONS': {
+#             'MAX_ENTRIES': 100000
+#         }
+#     }
+# }
+
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'main_query_result',
-        'TIMEOUT': 10, #60 * 60 * 24,
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 60 * 60 * 24, # TIMEOUT after 1 day
         'OPTIONS': {
-            'MAX_ENTRIES': 100000
+            'MAX_ENTRIES': 1000
         }
     }
 }
+
+EMAIL_HOST = 'm.hotmail.com'
+EMAIL_PORT = 25
+# SENDER ADDRESS AND PASSWORD
+EMAIL_HOST_USER = 'username@hotmail.com'
+EMAIL_HOST_PASSWORD = '******'
+EMAIL_USE_TLS = True
+# SENDER
+EMAIL_FROM = 'username@hotmail.com'
+
+

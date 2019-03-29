@@ -1,7 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.core.mail import send_mail
-from main.query import sendQuery
+from main.tasks import send_notification, send_query
 # Create your views here.
 
 
@@ -14,6 +12,10 @@ def UpLoad(request):
     if request.method == "POST" and 'userfile' in request.FILES:
         # Get the posted form
         userfile = request.FILES['userfile']
-        result_list = sendQuery(userfile)
+        email = request.POST.get('email', None)
+        result_list = send_query(userfile)
+        # Send notification email
+        if email:
+            send_notification(email)
         context = {'result_list': result_list}
     return render(request, 'index.html', context)
