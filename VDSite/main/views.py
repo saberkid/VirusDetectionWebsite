@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'index.html')
 
 
-def UpLoad(request):
+def upLoad(request):
     context = {}
     if request.method == "POST" and 'userfile' in request.FILES:
         # Get the posted form
