@@ -143,11 +143,9 @@ CACHES = {
 
 EMAIL_HOST = 'm.hotmail.com'
 EMAIL_PORT = 25
-# SENDER ADDRESS AND PASSWORD
-EMAIL_HOST_USER = 'username@hotmail.com'
-EMAIL_HOST_PASSWORD = '******'
+EMAIL_HOST_USER = 'username@hotmail.com'  # SENDER ADDRESS
+EMAIL_HOST_PASSWORD = '******'  # PASSWORD
 EMAIL_USE_TLS = True
-# SENDER
-EMAIL_FROM = 'username@hotmail.com'
+EMAIL_FROM = 'username@hotmail.com'  # SENDER
 
 

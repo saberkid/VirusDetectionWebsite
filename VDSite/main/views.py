@@ -10,12 +10,10 @@ def index(request):
 def upLoad(request):
     context = {}
     if request.method == "POST" and 'userfile' in request.FILES:
-        # Get the posted form
-        userfile = request.FILES['userfile']
+        userfile = request.FILES['userfile']    # Get the posted form
         email = request.POST.get('email', None)
         result_list = send_query(userfile)
-        # Send notification email
-        if email:
+        if email:    # Send notification email
             send_notification(email)
         context = {'result_list': result_list}
     return render(request, 'index.html', context)

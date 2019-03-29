@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main.views import index, upLoad
+
 urlpatterns = [
     path('', index, name='home'),
     path('upload/', upLoad, name='upload'),

@@ -8,6 +8,11 @@ QUERY_URL = "https://www.virustotal.com/vtapi/v2/file/report"
 headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36'}
 
 def query_hash(hash):
+    """query a hash value provided
+
+    :param hash: the hash value to query
+    :return: a Query_Result object
+    """
     res = cache.get(hash)
     if res:
         print("{} exists in Caches\n".format(hash))
@@ -28,8 +33,14 @@ def query_hash(hash):
     return res
 
 
-# Function to recursively read json object
 def get_or_default(jsonObj, key_chain, default_value=None):
+    """Recursively read json object
+
+    :param jsonObj: json object to read
+    :param key_chain: a list of keys ordered by the 'get' sequence
+    :param default_value:  default value to return if a key error raises
+    :return: value read from json object
+    """
     if len(key_chain) == 1:
         return default_value if key_chain[0] not in jsonObj else jsonObj[key_chain[0]]
 
