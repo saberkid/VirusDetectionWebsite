@@ -3,7 +3,7 @@ This is a web application that allows users to upload a text
 file as a list of hashes (MD5 or Sha256) and generates a simple report using
 information provided by querying VirusTotal's public API for the scan report of the hashes.
 
-The project is developed based on [Djiango](https://www.djangoproject.com/)'s framework.
+The project is developed based on [Django](https://www.djangoproject.com/)'s framework.
 ## Features
 * Users' query results are cached (into main memory by default) to facilitate frequent query.
 * Users can also be notified by emails when the query is done. (see Issues for setup instructions)
