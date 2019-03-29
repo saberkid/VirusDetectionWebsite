@@ -103,5 +103,6 @@ For more information on django's cache mechanism, visit [here](https://docs.djan
 ## TODO lists
 * Check the validicity of user's email address input.
 * Check the format and size of the user upload. 
-* Paging if the query result is too long. (More of a front end job, not fulfilled here)
-* Using asynchronized operations to update the webpage with partial results. (In Djiango, implementation of async requests depends on different brokers. Not fulfilled here for the easy deployment of the project)
+* Paging if the query result is too long. (Due to the API limits, not implemented here.)
+* Using asynchronized operations to update the webpage with partial results. (In Djiango, implementation of async requests depends on different brokers (redis, database, django etc.). Not fulfilled here for the easy deployment of the project)
+* Integrate with [nginx](https://www.nginx.com/) and [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) to improve the performance at a high concurrency.
