@@ -10,30 +10,7 @@
         <p><button type="submit">Upload</button></p>
     </form>
 </div>
-<table class="table table-striped " style="text-align: center; ">
-    <thead style="font-weight: bold;">
-    <tr>
-        <td>hash_value (MD5 or Sha256)</td>
-        <td>Fortinet detection names</td>
-        <td>Number of engines detected</td>
-        <td>Scan Date</td>
-    </tr>
-    </thead>
-{% if result_list %}
 
-    {% for result in result_list %}
-    <tr>
-        <td>{{result.hash}}</td>
-        <td>{{result.fortinet}}</td>
-        <td>{{result.positive}}</td>
-        <td>{{result.date}}</td>
-    </tr>
-    {% endfor %}
-
-{% else %}
-    <p>No Resuls are available.</p>
-{% endif %}
-</table>>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ def send_notification(email):
     :return:
     :raises: SMTPException if an error occurs during send_mail()
     """
-    email_title = 'Your Malware Detection is Completed'
+    email_title = 'Your Virus Detection is Completed'
     email_body = 'FYI'
     try:
         if email_check_valid(email):
@@ -31,12 +31,12 @@ def send_query(f, mode='test'):
     count = 0
     res_list = []
     for line in f:
-        count += 1
-        if mode == 'test' and count >= 5:
+        if mode == 'test' and count >= 4:
             break
+        count += 1
         hash = line.decode("utf-8").replace('\n', '')
 
-        res = query_hash(hash)
+        res = query_hash(hash, mode)
         res_list.append({'hash': res.hash, 'fortinet': res.fortinet, 'positive': res.positive, 'date': res.date})
     return res_list
 

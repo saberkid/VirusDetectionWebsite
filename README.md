@@ -3,10 +3,10 @@ This is a web application that allows users to upload a text
 file as a list of hashes (MD5 or Sha256) and generates a simple report using
 information provided by querying VirusTotal's public API for the scan report of the hashes.
 
-The project is developed based on [Djiango](https://www.djangoproject.com/)'s framework.
+The project is developed based on [Django](https://www.djangoproject.com/) framework.
 ## Features
 * Users' query results are cached (into main memory by default) to facilitate frequent query.
-* Users can also be notified by emails when the query is done. (see Issues for setup instructions)
+* Users can also be notified by emails when the query is done. (Refer to `Issues`)
 ## Denpendencies
 * python==3.x (Let's move on to python 3 if you still use python 2)
 * django==2.1.7
@@ -19,6 +19,7 @@ pip install requests
 ```
 
 ## Run
+**Please note that this demo project runs in test mode (4 queries at most) due to the API's restriction. Disable the test mode (Refer to `Issues`) if you have private API**
 * Switch to the project folder
 ```
 cd VDSite
@@ -55,11 +56,11 @@ main/
 ## Issues
 1. API's daily limit
 
-Since the Public API is limited to 4 requests per minute on `virustotal.com`, the query is sleeped every 20 seconds.
+Since the Public API is limited to 4 requests per minute on `virustotal.com`, one solution is to sleep the query every 15 seconds.
 
 2. Test mode
 
-For fast verification, only up to 5 hashed values are tested. To disable the test mode, set `mode` to strings other than `'test'` in function `send_query` located in [main/task.py](VDSite/main/tasks.py).
+For fast verification, only up to 4 hashed values are tested, without the need of calling `sleep()`. To disable the test mode, set `mode` to strings other than `'test'` in function `send_query` located in [main/task.py](VDSite/main/tasks.py).
 
 3. Email notification
 
@@ -106,3 +107,4 @@ For more information on django's cache mechanism, visit [here](https://docs.djan
 * Paging if the query result is too long. (Due to the API limits, not implemented here.)
 * Using asynchronized operations to update the webpage with partial results. (In Djiango, implementation of async requests depends on different brokers (redis, database, django etc.). Not fulfilled here for the easy deployment of the project)
 * Integrate with [nginx](https://www.nginx.com/) and [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) to improve the performance at a high concurrency.
+* Add restrictions on the amount of requests acceptable during a period. (tocken bucket on whole server/ per user)

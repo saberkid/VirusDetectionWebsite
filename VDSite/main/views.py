@@ -7,13 +7,15 @@ def index(request):
     return render(request, 'index.html')
 
 
-def upLoad(request):
+def upload(request):
     context = {}
     if request.method == "POST" and 'userfile' in request.FILES:
         userfile = request.FILES['userfile']    # Get the posted form
+        filename = request.FILES['userfile'].name    # Get the filename
         email = request.POST.get('email', None)
         result_list = send_query(userfile)
         if email:    # Send notification email
             send_notification(email)
-        context = {'result_list': result_list}
-    return render(request, 'index.html', context)
+
+        context = {'result_list': result_list, 'filename': filename}
+    return render(request, 'report.html', context)
