@@ -3,7 +3,7 @@ from main.models import Query_Result
 from django.core.cache import cache
 import time
 
-API_KEY = "a5a6312eb7a4dd14fb1dfb145aa1ec654beacc0f36c67fc6b98b109b0c3bf5b0"
+API_KEY = "YOUR_API_KEY"
 QUERY_URL = "https://www.virustotal.com/vtapi/v2/file/report"
 headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36'}
 
